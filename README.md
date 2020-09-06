@@ -117,7 +117,7 @@ Podemos, por exemplo, garantir que um mock vai ser chamado com uma String começ
 `verify(meuMock).imprimeMensagem(startsWith("Importante:"));`
 ## Como capturar Argumentos no teste ?
 
-`    @Test
+    `@Test
     public void deveGerarPagamentoParaUmLeilaoEncerrado() {
 
         RepositorioDeLeiloes leiloes = mock(RepositorioDeLeiloes.class);
