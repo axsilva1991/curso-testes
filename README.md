@@ -1,11 +1,10 @@
 # testes-cursos
 Testes de comportamentos automatizados
 
-Para garantir que um método seja invocado apenas uma única vez num mock, devemos passar um segundo argumento para o método verify, que é o times(1):
-
+## Para garantir que um método seja invocado apenas uma única vez num mock, devemos passar um segundo argumento para o método verify, que é o times(1):
 `verify(daoFalso, times(1)).atualiza(leilao1);` verify metodos executados uma quantidade de vezes.
 
-Repare que o método times recebe como argumento o número de vezes que o método deve ser invocado. Ou seja, você pode verificar que um método foi chamado exatamente 4 vezes, se for necessário.
+## Repare que o método times recebe como argumento o número de vezes que o método deve ser invocado. Ou seja, você pode verificar que um método foi chamado exatamente 4 vezes, se for necessário.
 
     `@Test
     public void naoDeveEncerrarLeiloesQueComecaramMenosDeUmaSemanaAtras() {
@@ -18,10 +17,9 @@ Repare que o método times recebe como argumento o número de vezes que o métod
         assertFalse(leilao2.isEncerrado());
         verify(daoFalso, never()).atualiza(leilao1);//exemplos de verify de metodos nunca executados.
         verify(daoFalso, never()).atualiza(leilao2);
-    }
-    `
+    }`
     
-Ainda podemos passar atLeastOnce(), atLeast(numero) e atMost(numero) para o verify().
+##Ainda podemos passar atLeastOnce(), atLeast(numero) e atMost(numero) para o verify().
 
 O nome do método nos ajuda a inferir o que ele faz. Discuta para que serve cada um destes métodos auxiliares.
 
@@ -37,7 +35,7 @@ Por fim, o método atMost(numero) nos garante que um método foi executado até 
 Veja que existem diversas maneiras diferentes para garantir a quantidade de invocações de um método! Você pode escolher a melhor e mais elegante para seu teste!
 
 
---Garantindo que os métodos foram executados na ordem certa
+## Garantindo que os métodos foram executados na ordem certa
 PRÓXIMA ATIVIDADE
 
 Teste agora que o leilão é realmente enviado por e-mail. Esse teste é análogo ao teste que você fez para garantir que o leilão é persistido no DAO.
