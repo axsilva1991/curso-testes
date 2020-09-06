@@ -1,5 +1,4 @@
-# testes-cursos
-Testes de comportamentos automatizados
+# Testes de comportamentos automatizados
 
 ## Para garantir que um método seja invocado apenas uma única vez num mock, devemos passar um segundo argumento para o método verify, que é o times(1):
 `verify(daoFalso, times(1)).atualiza(leilao1);` verify metodos executados uma quantidade de vezes.
