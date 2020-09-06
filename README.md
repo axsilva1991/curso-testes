@@ -50,7 +50,8 @@ Para isso, faça uso do método inOrder() do Mockito. Veja um exemplo de utiliza
         inOrder.verify(daoFalso, times(1)).atualiza(leilao1);    
         // a segunda invocação
         inOrder.verify(carteiroFalso, times(1)).envia(leilao1);    
-por exemplo 
+por exemplo
+
     `@Test
     public void deveEnviarEmailAposPersistirLeilaoEncerrado() {
         Calendar antiga = Calendar.getInstance();
