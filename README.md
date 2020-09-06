@@ -137,8 +137,8 @@ Podemos, por exemplo, garantir que um mock vai ser chamado com uma String começ
             new GeradorDePagamento(leiloes, pagamentos, avaliador);
         gerador.gera();
 
-        ArgumentCaptor<Pagamento> argumento = ArgumentCaptor.forClass(Pagamento.class);
+        <b>ArgumentCaptor<Pagamento> argumento = ArgumentCaptor.forClass(Pagamento.class);
         verify(pagamentos).salva(argumento.capture());
         Pagamento pagamentoGerado = argumento.getValue();
-        assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
+        assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);</b>
     }`
