@@ -19,7 +19,7 @@ Testes de comportamentos automatizados
         verify(daoFalso, never()).atualiza(leilao2);
     }`
     
-##Ainda podemos passar atLeastOnce(), atLeast(numero) e atMost(numero) para o verify().
+## Ainda podemos passar atLeastOnce(), atLeast(numero) e atMost(numero) para o verify().
 
 O nome do método nos ajuda a inferir o que ele faz. Discuta para que serve cada um destes métodos auxiliares.
 
