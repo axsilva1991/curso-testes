@@ -7,20 +7,15 @@ Para garantir que um método seja invocado apenas uma única vez num mock, devem
 
 Repare que o método times recebe como argumento o número de vezes que o método deve ser invocado. Ou seja, você pode verificar que um método foi chamado exatamente 4 vezes, se for necessário.
 
-`
-    @Test
+    `@Test
     public void naoDeveEncerrarLeiloesQueComecaramMenosDeUmaSemanaAtras() {
-
         RepositorioDeLeiloes daoFalso = mock(LeilaoDao.class);
         when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1, leilao2));
-
         EncerradorDeLeilao encerrador = new EncerradorDeLeilao(daoFalso);
         encerrador.encerra();
-
         assertEquals(0, encerrador.getTotalEncerrados());
         assertFalse(leilao1.isEncerrado());
         assertFalse(leilao2.isEncerrado());
-
         verify(daoFalso, never()).atualiza(leilao1);//exemplos de verify de metodos nunca executados.
         verify(daoFalso, never()).atualiza(leilao2);
     }
