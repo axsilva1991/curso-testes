@@ -35,3 +35,21 @@ O método atLeast(numero) funciona de forma análoga ao método acima, com a dif
 Por fim, o método atMost(numero) nos garante que um método foi executado até no máximo N vezes. Ou seja, se o método tiver mais invocações do que o que foi passado para o atMost, o teste falha.
 
 Veja que existem diversas maneiras diferentes para garantir a quantidade de invocações de um método! Você pode escolher a melhor e mais elegante para seu teste!
+
+
+--Garantindo que os métodos foram executados na ordem certa
+PRÓXIMA ATIVIDADE
+
+Teste agora que o leilão é realmente enviado por e-mail. Esse teste é análogo ao teste que você fez para garantir que o leilão é persistido no DAO.
+
+Só que, dessa vez, garanta que os métodos foram executados nessa ordem específica: primeiro o DAO, depois o envio do e-mail.
+
+Para isso, faça uso do método inOrder() do Mockito. Veja um exemplo de utilização:
+
+        // passamos os mocks que serao verificados
+        InOrder inOrder = inOrder(daoFalso, carteiroFalso);
+        // a primeira invocação
+        inOrder.verify(daoFalso, times(1)).atualiza(leilao1);    
+        // a segunda invocação
+        inOrder.verify(carteiroFalso, times(1)).envia(leilao1);    
+Cole seu método de teste aqui. Por curiosidade, inverta a ordem de invocação no método de produção e veja o teste falhar para entender melhor o funcionamento do inOrder().
