@@ -101,3 +101,21 @@ por exemplo
         verify(carteiroFalso, never()).envia(leilao1);
         verify(carteiroFalso, never()).envia(leilao2);
     }`
+## Argumentos Genericos:
+
+`Mais sobre argumentos genéricos
+PRÓXIMA ATIVIDADE
+
+No exercício anterior usamos o método any() da classe org.mockito.ArgumentMatchers para dizer ao Mockito que nosso mock object poderia receber qualquer objeto do tipo Leilao.
+
+A classe ArgumentMatchers tem muitos outros métodos. Veja a lista de métodos dela. Para que servem esses métodos?
+
+VER OPINIÃO DO INSTRUTOR
+Opinião do instrutor
+
+A classe Matchers possui diversos métodos que podem ser usados para especificarmos que argumentos nosso mock pode receber numa chamada de método. Isso permite escrever testes mais facilmente e deixa nosso código mais flexível.
+
+Podemos, por exemplo, garantir que um mock vai ser chamado com uma String começando com "Importante:". Veja só:
+
+verify(meuMock).imprimeMensagem(startsWith("Importante:"));
+`
