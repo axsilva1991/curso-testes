@@ -50,4 +50,25 @@ Para isso, faça uso do método inOrder() do Mockito. Veja um exemplo de utiliza
         inOrder.verify(daoFalso, times(1)).atualiza(leilao1);    
         // a segunda invocação
         inOrder.verify(carteiroFalso, times(1)).envia(leilao1);    
-Cole seu método de teste aqui. Por curiosidade, inverta a ordem de invocação no método de produção e veja o teste falhar para entender melhor o funcionamento do inOrder().
+por exemplo 
+`    @Test
+    public void deveEnviarEmailAposPersistirLeilaoEncerrado() {
+        Calendar antiga = Calendar.getInstance();
+        antiga.set(1999, 1, 20);
+
+        Leilao leilao1 = new CriadorDeLeilao().para("TV de plasma")
+            .naData(antiga).constroi();
+
+        RepositorioDeLeiloes daoFalso = mock(RepositorioDeLeiloes.class);
+        when(daoFalso.correntes()).thenReturn(Arrays.asList(leilao1));
+
+        EnviadorDeEmail carteiroFalso = mock(EnviadorDeEmail.class);
+        EncerradorDeLeilao encerrador = 
+            new EncerradorDeLeilao(daoFalso, carteiroFalso);
+
+        encerrador.encerra();
+
+        InOrder inOrder = inOrder(daoFalso, carteiroFalso);
+        inOrder.verify(daoFalso, times(1)).atualiza(leilao1);    
+        inOrder.verify(carteiroFalso, times(1)).envia(leilao1);    
+    }`
