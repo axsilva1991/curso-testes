@@ -115,3 +115,30 @@ A classe Matchers possui diversos métodos que podem ser usados para especificar
 Podemos, por exemplo, garantir que um mock vai ser chamado com uma String começando com "Importante:". Veja só:
 
 `verify(meuMock).imprimeMensagem(startsWith("Importante:"));`
+## Como capturar Argumentos no teste ?
+
+`    @Test
+    public void deveGerarPagamentoParaUmLeilaoEncerrado() {
+
+        RepositorioDeLeiloes leiloes = mock(RepositorioDeLeiloes.class);
+        RepositorioDePagamentos pagamentos = mock(RepositorioDePagamentos.class);
+        Avaliador avaliador = mock(Avaliador.class);
+
+        Leilao leilao = new CriadorDeLeilao()
+            .para("Playstation")
+            .lance(new Usuario("José da Silva"), 2000.0)
+            .lance(new Usuario("Maria Pereira"), 2500.0)
+            .constroi();
+
+        when(leiloes.encerrados()).thenReturn(Arrays.asList(leilao));
+        when(avaliador.getMaiorLance()).thenReturn(2500.0);
+
+        GeradorDePagamento gerador = 
+            new GeradorDePagamento(leiloes, pagamentos, avaliador);
+        gerador.gera();
+
+        ArgumentCaptor<Pagamento> argumento = ArgumentCaptor.forClass(Pagamento.class);
+        verify(pagamentos).salva(argumento.capture());
+        Pagamento pagamentoGerado = argumento.getValue();
+        assertEquals(2500.0, pagamentoGerado.getValor(), 0.00001);
+    }`
