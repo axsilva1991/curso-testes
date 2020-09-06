@@ -74,7 +74,7 @@ por exemplo
         inOrder.verify(carteiroFalso, times(1)).envia(leilao1);    
     }`
     
-    ## Como mockar uma exceção?
+ ## Como mockar uma exceção?
     
     `@Test
     public void deveDesistirSeDaoFalhaPraSempre() {
